@@ -8,13 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     container: qmkfm/qmk_cli
     steps:
+    - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Checkout QMK Firmware
         uses: actions/checkout@v4
 
-      - name: Set up QMK
-        run: |
-          qmk setup -y
-          cp -r keyboards/doio ./qmk_firmware/keyboards/
+- name: Setup QMK
+        uses: qmk/actions@v1
+        with:
+          command: qmk compile -kb doio/kb16/rev2 -km default
 
       - name: Compile firmware
         run: |
@@ -25,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: doio_kb16b02_firmware
-          path: doio-kb16b02-qmk/keyboards/doio/kb16b_02/*.hex
+          path: qmk_firmware/*.hex
