@@ -25,5 +25,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: doio_kb16b02_firmware
-          path: doio-kb16b02-qmk/keyboards/doio
-/kb16b_02/*.hex
+          path: doio-kb16b02-qmk/keyboards/doio/kb16b_02/*.hex
