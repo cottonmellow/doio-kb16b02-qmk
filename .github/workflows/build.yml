@@ -1,13 +1,15 @@
 name: Build Firmware
 
-on: [push]
+on:
+  workflow_dispatch:
 
 jobs:
-  my_first_job:
+  build:
     runs-on: ubuntu-latest
+    container: qmkfm/qmk_cli
     steps:
-      # References an action in the same repository at the running commit
-      - uses: $/.github/actions/hello-world-action
+      - name: Checkout QMK Firmware
+        uses: actions/checkout@v3
 
       - name: Set up QMK
         run: |
