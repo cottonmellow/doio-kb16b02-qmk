@@ -9,7 +9,7 @@ jobs:
     container: qmkfm/qmk_cli
     steps:
     - name: Checkout repository
-        uses: actions/checkout@v4
+    uses: actions/checkout@v4
         with:
           submodules: true
       - name: Checkout QMK Firmware
